@@ -1,0 +1,82 @@
+---
+import { about, qualityPolicies } from '../data/site';
+---
+
+<section class="py-30 bg-ink relative overflow-hidden" id="kurumsal">
+  <!-- Subtle blueprint texture -->
+  <div class="absolute inset-0 bp-grid pointer-events-none"></div>
+
+  <div class="max-w-[1200px] mx-auto px-10 relative z-1">
+    <div class="grid grid-cols-[5fr_4fr] gap-x-24 items-start">
+      <!-- Left: Content -->
+      <div>
+        <div class="section-tag section-tag--brass">Hakkımızda</div>
+
+        <h2 class="font-heading text-[42px] font-extrabold text-paper leading-[1.1] tracking-tight mb-9">
+          Özkan Kardeşler<br />CNC Merkezi
+        </h2>
+
+        {
+          about.text.map((p) => (
+            <p class="text-[15px] text-text-on-dark/65 leading-[1.9] mb-5">
+              {p}
+            </p>
+          ))
+        }
+
+        <!-- Specs table -->
+        <div class="mt-12 border-t border-white/6">
+          {
+            about.specs.map((spec) => (
+              <div class="grid grid-cols-[160px_1fr] border-b border-white/6 py-4 text-[13px]">
+                <dt class="font-mono text-[10px] text-text-on-dark/40 tracking-[2px] uppercase pt-0.5">
+                  {spec.label}
+                </dt>
+                <dd class="text-paper font-medium">{spec.value}</dd>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Right: Quality Policy -->
+      <div>
+        <div class="bg-ink-2 border border-white/6 p-12 relative">
+          <!-- Label badge -->
+          <div
+            class="absolute top-0 left-10 -translate-y-1/2 bg-brass text-ink font-mono text-[10px] font-medium tracking-[3px] uppercase px-5 py-1.5"
+          >
+            Kalite Politikası
+          </div>
+
+          <h4 class="font-heading text-[22px] font-bold text-paper mb-7 mt-2">
+            Müşteri Odaklı<br />Sürekli İyileştirme
+          </h4>
+
+          <ul class="list-none">
+            {
+              qualityPolicies.map((item) => (
+                <li class="text-sm text-text-on-dark/65 leading-[1.6] py-3.5 pl-5 border-b border-white/6 last:border-b-0 relative">
+                  <span class="absolute left-0 top-[18px] w-1.5 h-1.5 border border-brass rotate-45" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Title block -->
+        <div class="grid grid-cols-2 border border-white/6 border-t-0 -mt-px">
+          <div class="p-3.5 px-5 border-r border-white/6 font-mono">
+            <span class="text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block">Doküman</span>
+            <span class="text-xs text-paper font-medium">Kurumsal Profil</span>
+          </div>
+          <div class="p-3.5 px-5 font-mono">
+            <span class="text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block">Revizyon</span>
+            <span class="text-xs text-paper font-medium">2026.03</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

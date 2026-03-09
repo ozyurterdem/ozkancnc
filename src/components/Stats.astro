@@ -1,0 +1,32 @@
+---
+import { stats } from '../data/site';
+---
+
+<section class="bg-paper" id="stats">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="grid grid-cols-4 border-b border-black/6">
+      {
+        stats.map((stat, i) => (
+          <div class="py-12 px-8 border-r border-black/6 last:border-r-0 relative">
+            {/* Index number */}
+            <span class="absolute top-4 left-4 font-mono text-[9px] text-text-muted/40 tracking-[1px]">
+              0{i + 1}
+            </span>
+
+            <div class="font-heading text-[44px] font-extrabold text-text-primary tracking-tight leading-none">
+              {stat.value}
+              {stat.unit && (
+                <span class="text-lg font-semibold text-eng-mid ml-0.5">
+                  {stat.unit}
+                </span>
+              )}
+            </div>
+            <div class="text-[13px] text-text-secondary font-medium mt-2">
+              {stat.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

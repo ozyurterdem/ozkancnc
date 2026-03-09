@@ -1,0 +1,51 @@
+---
+import { services } from '../data/site';
+---
+
+<section class="py-30 bg-paper-warm" id="hizmetler">
+  <div class="max-w-[1200px] mx-auto px-10">
+    <!-- Section Header: split layout -->
+    <div class="grid grid-cols-2 gap-10 mb-18 items-end">
+      <div>
+        <div class="section-tag section-tag--eng">Hizmetlerimiz</div>
+        <h2 class="font-heading text-[42px] font-extrabold text-text-primary tracking-tight leading-[1.1]">
+          Uzmanlık<br />Alanlarımız
+        </h2>
+      </div>
+      <div>
+        <p class="text-[15px] text-text-secondary leading-[1.8]">
+          Universal tezgahlardan CNC işleme merkezlerine evrilen 30 yıllık yolculuğumuzda,
+          hassasiyet ve kaliteden hiçbir zaman ödün vermedik.
+        </p>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-3 gap-px bg-black/6 border border-black/6">
+      {
+        services.map((srv) => (
+          <div class="bg-paper py-11 px-9 transition-all duration-500 hover:bg-paper-warm relative group">
+            {/* Top accent line on hover */}
+            <div class="absolute top-0 left-0 w-0 h-0.5 bg-brass transition-all duration-500 group-hover:w-full" />
+
+            <div class="font-mono text-[10px] text-text-muted tracking-[2px] mb-7">
+              {srv.num}
+            </div>
+
+            <h3 class="font-heading text-xl font-bold text-text-primary mb-3 tracking-tight">
+              {srv.title}
+            </h3>
+
+            <p class="text-sm text-text-secondary leading-[1.7]">
+              {srv.description}
+            </p>
+
+            <span class="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] text-eng-mid tracking-[1px] px-3 py-1.5 bg-eng-mid/8">
+              {srv.tag}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

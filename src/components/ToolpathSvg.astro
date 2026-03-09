@@ -1,0 +1,29 @@
+---
+// CNC Toolpath animation — subtle, kurumsal
+---
+
+<svg
+  class="w-4/5 h-4/5 opacity-12"
+  viewBox="0 0 500 500"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <!-- Main toolpath -->
+  <path
+    class="toolpath-draw"
+    d="M80,80 L200,80 L200,140 L340,140 L340,80 L420,80 L420,200 L360,200 L360,260 L420,260 L420,380 L320,380 L320,320 L260,320 L260,420 L180,420 L180,320 L80,320 L80,200 L140,200 L140,140 L80,140 Z"
+    fill="none"
+    stroke="#2a5298"
+    stroke-width="0.8"
+  />
+
+  <!-- Inner contour -->
+  <path
+    class="toolpath-draw-delay"
+    d="M180,160 L300,160 L300,220 L340,220 L340,280 L280,280 L280,380 L220,380 L220,280 L160,280 L160,200 L180,200 Z"
+    fill="none"
+    stroke="#b08d4e"
+    stroke-width="0.5"
+    opacity="0.6"
+  />
+</svg>

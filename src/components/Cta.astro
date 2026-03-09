@@ -1,0 +1,62 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="py-30 bg-paper-warm border-t border-black/6" id="iletisim">
+  <div class="max-w-[1200px] mx-auto px-10">
+    <div class="grid grid-cols-2 gap-20 items-center">
+      <!-- Left: CTA Text -->
+      <div>
+        <h2 class="font-heading text-[40px] font-extrabold text-text-primary tracking-tight leading-[1.1] mb-4">
+          Projeniz İçin<br />Teklif Alın
+        </h2>
+        <p class="text-[15px] text-text-secondary leading-[1.8] mb-10">
+          Teknik çizimlerinizi gönderin, 24 saat içinde detaylı maliyet analizi ve üretim planı sunalım.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href={`mailto:${site.email}`}
+            class="inline-flex items-center gap-2.5 px-8 py-4 bg-brass text-ink text-[13px] font-semibold tracking-[0.5px] no-underline transition-all duration-400 hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(176,141,78,0.15)]"
+          >
+            Teklif Talep Edin
+          </a>
+          <a
+            href="tel:+90"
+            class="inline-flex items-center gap-2 px-6 py-4 text-text-primary text-[13px] font-medium no-underline border border-black/10 transition-all duration-300 hover:border-black/20"
+          >
+            Bizi Arayın →
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Contact Card -->
+      <div class="bg-ink p-12 relative">
+        <!-- Left accent bar -->
+        <div class="absolute top-0 left-0 w-[3px] h-full bg-brass"></div>
+
+        {
+          [
+            { label: 'E-Posta', value: site.email, highlight: true },
+            { label: 'Adres', value: `${site.address.street}\n${site.address.district} / ${site.address.city}` },
+            { label: 'Çalışma Saatleri', value: site.workingHours },
+            { label: 'Sosyal Medya', value: 'Instagram · LinkedIn' },
+          ].map((item) => (
+            <div class="py-5 border-b border-white/6 last:border-b-0">
+              <div class="font-mono text-[9px] text-text-on-dark/30 tracking-[3px] uppercase mb-1.5">
+                {item.label}
+              </div>
+              <div
+                class:list={[
+                  'text-[15px] font-medium whitespace-pre-line',
+                  item.highlight ? 'text-brass-light font-mono text-sm' : 'text-paper',
+                ]}
+              >
+                {item.value}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
