@@ -43,5 +43,8 @@ const pageTitle = title === site.name ? title : `${title} — ${site.shortName}`
   </head>
   <body class="overflow-x-hidden">
     <slot />
+    <script>
+      import '../scripts/scroll-reveal.ts';
+    </script>
   </body>
 </html>

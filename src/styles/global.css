@@ -65,69 +65,70 @@ h1, h2, h3, h4, h5 {
   background-size: 80px 80px;
 }
 
-/* ===== Corner Marks (teknik çizim köşe) ===== */
-.corner-marks {
-  position: relative;
-}
+/* ===== Corner Marks ===== */
+.corner-marks { position: relative; }
 .corner-marks::before {
-  content: '';
-  position: absolute; top: -1px; left: -1px;
+  content: ''; position: absolute; top: -1px; left: -1px;
   width: 12px; height: 12px;
   border-top: 1px solid var(--color-eng-mid);
   border-left: 1px solid var(--color-eng-mid);
 }
 .corner-marks::after {
-  content: '';
-  position: absolute; bottom: -1px; right: -1px;
+  content: ''; position: absolute; bottom: -1px; right: -1px;
   width: 12px; height: 12px;
   border-bottom: 1px solid var(--color-eng-mid);
   border-right: 1px solid var(--color-eng-mid);
 }
 
-/* ===== Section Tag (bölüm etiketi) ===== */
+/* ===== Section Tag ===== */
 .section-tag {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 12px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 20px;
 }
-.section-tag::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-}
-.section-tag--brass {
-  color: var(--color-brass);
-}
-.section-tag--brass::before {
-  background: var(--color-brass);
-}
-.section-tag--eng {
-  color: var(--color-eng-mid);
-}
-.section-tag--eng::before {
-  background: var(--color-eng-mid);
-}
+.section-tag::before { content: ''; width: 24px; height: 1px; }
+.section-tag--brass { color: var(--color-brass); }
+.section-tag--brass::before { background: var(--color-brass); }
+.section-tag--eng { color: var(--color-eng-mid); }
+.section-tag--eng::before { background: var(--color-eng-mid); }
 
 /* ===== Toolpath Animation ===== */
 .toolpath-draw {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
+  stroke-dasharray: 800; stroke-dashoffset: 800;
   animation: toolpath-draw 12s ease-in-out infinite;
 }
 .toolpath-draw-delay {
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
+  stroke-dasharray: 400; stroke-dashoffset: 400;
   animation: toolpath-draw 10s ease-in-out 3s infinite;
 }
-
 @keyframes toolpath-draw {
   0% { stroke-dashoffset: 800; }
   40% { stroke-dashoffset: 0; }
   60% { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: -800; }
 }
+
+/* ===== Scroll Reveal ===== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="100"].revealed { transition-delay: 100ms; }
+[data-reveal-delay="200"].revealed { transition-delay: 200ms; }
+[data-reveal-delay="300"].revealed { transition-delay: 300ms; }
+[data-reveal-delay="400"].revealed { transition-delay: 400ms; }
+[data-reveal-delay="500"].revealed { transition-delay: 500ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Smooth scroll ===== */
+html { scroll-behavior: smooth; }

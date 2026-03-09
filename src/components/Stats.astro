@@ -4,24 +4,26 @@ import { stats } from '../data/site';
 
 <section class="bg-paper" id="stats">
   <div class="max-w-[1200px] mx-auto">
-    <div class="grid grid-cols-4 border-b border-black/6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 border-b border-black/6">
       {
         stats.map((stat, i) => (
-          <div class="py-12 px-8 border-r border-black/6 last:border-r-0 relative">
-            {/* Index number */}
-            <span class="absolute top-4 left-4 font-mono text-[9px] text-text-muted/40 tracking-[1px]">
+          <div
+            class="py-8 lg:py-12 px-6 lg:px-8 border-r border-black/6 even:border-r-0 lg:even:border-r lg:last:border-r-0 border-b border-black/6 lg:border-b-0 relative"
+            data-reveal
+            data-reveal-delay={`${i * 100}`}
+          >
+            <span class="absolute top-3 left-4 font-mono text-[9px] text-text-muted/40 tracking-[1px]">
               0{i + 1}
             </span>
-
-            <div class="font-heading text-[44px] font-extrabold text-text-primary tracking-tight leading-none">
+            <div class="font-heading text-[clamp(2rem,4vw,2.75rem)] font-extrabold text-text-primary tracking-tight leading-none">
               {stat.value}
               {stat.unit && (
-                <span class="text-lg font-semibold text-eng-mid ml-0.5">
+                <span class="text-base lg:text-lg font-semibold text-eng-mid ml-0.5">
                   {stat.unit}
                 </span>
               )}
             </div>
-            <div class="text-[13px] text-text-secondary font-medium mt-2">
+            <div class="text-[12px] lg:text-[13px] text-text-secondary font-medium mt-2">
               {stat.label}
             </div>
           </div>

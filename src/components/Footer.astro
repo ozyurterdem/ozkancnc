@@ -2,18 +2,13 @@
 import { site } from '../data/site';
 ---
 
-<footer class="bg-ink border-t border-white/6 pt-18 pb-0">
-  <div class="max-w-[1200px] mx-auto px-10">
+<footer class="bg-ink border-t border-white/6 pt-14 lg:pt-18 pb-0">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
     <!-- Main grid -->
-    <div class="grid grid-cols-[2.5fr_1fr_1fr_1.5fr] gap-14 pb-14">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2.5fr_1fr_1fr_1.5fr] gap-10 lg:gap-14 pb-12 lg:pb-14">
       <!-- Brand -->
-      <div>
-        <div class="font-heading text-base font-bold text-paper tracking-[4px] uppercase mb-1">
-          {site.shortName}
-        </div>
-        <span class="font-mono text-[9px] text-text-on-dark/30 tracking-[2px] block mb-5">
-          Kardeşler · Est. {site.established}
-        </span>
+      <div class="sm:col-span-2 lg:col-span-1">
+        <img src="/images/logo.png" alt={site.name} class="h-12 w-auto mb-4 opacity-80" loading="lazy" />
         <p class="text-[13px] text-text-on-dark/50 leading-[1.7] max-w-[320px]">
           CNC talaşlı imalat, fason üretim ve kalıp imalatında AB standartlarında üretim yapan,
           Sakarya'nın köklü sanayi kuruluşlarından.
@@ -22,94 +17,78 @@ import { site } from '../data/site';
 
       <!-- Kurumsal -->
       <div>
-        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-6 pb-3 border-b border-white/6">
+        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-5 pb-3 border-b border-white/6">
           Kurumsal
         </h5>
         <ul class="list-none">
-          {
-            ['Hakkımızda', 'Misyon', 'Vizyon', 'Kalite Belgeleri'].map((item) => (
-              <li class="mb-2.5">
-                <a
-                  href="#"
-                  class="text-text-on-dark/50 text-[13px] no-underline transition-opacity duration-300 hover:opacity-100"
-                >
-                  {item}
-                </a>
-              </li>
-            ))
-          }
+          {['Hakkımızda', 'Misyon', 'Vizyon', 'Kalite Belgeleri'].map((item) => (
+            <li class="mb-2.5">
+              <a href="#kurumsal" class="text-text-on-dark/50 text-[13px] no-underline transition-opacity duration-300 hover:opacity-100">
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <!-- Hizmetler -->
       <div>
-        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-6 pb-3 border-b border-white/6">
+        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-5 pb-3 border-b border-white/6">
           Hizmetler
         </h5>
         <ul class="list-none">
-          {
-            ['CNC Dik İşleme', 'CNC Torna', 'Fason İmalat', 'Kalıp Üretimi', 'Kaynak İşleri'].map(
-              (item) => (
-                <li class="mb-2.5">
-                  <a
-                    href="#"
-                    class="text-text-on-dark/50 text-[13px] no-underline transition-opacity duration-300 hover:opacity-100"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )
-          }
+          {['CNC Dik İşleme', 'CNC Torna', 'Fason İmalat', 'Kalıp Üretimi', 'Kaynak İşleri'].map((item) => (
+            <li class="mb-2.5">
+              <a href="#hizmetler" class="text-text-on-dark/50 text-[13px] no-underline transition-opacity duration-300 hover:opacity-100">
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <!-- İletişim -->
       <div>
-        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-6 pb-3 border-b border-white/6">
+        <h5 class="font-mono text-[9px] text-brass tracking-[3px] uppercase mb-5 pb-3 border-b border-white/6">
           İletişim
         </h5>
-        {
-          [
-            { label: 'Adres', value: `${site.address.street}\n${site.address.district} / ${site.address.city}` },
-            { label: 'E-Posta', value: site.email },
-            { label: 'Telefon', value: site.phone },
-          ].map((item) => (
-            <div class="mb-4">
-              <span class="font-mono text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block mb-1">
-                {item.label}
-              </span>
-              <span class="text-[13px] text-paper/80 font-medium whitespace-pre-line">
-                {item.value}
-              </span>
-            </div>
-          ))
-        }
+        {[
+          { label: 'Adres', value: `${site.address.street}\n${site.address.district} / ${site.address.city}` },
+          { label: 'E-Posta', value: site.email },
+          { label: 'Telefon', value: site.phone },
+        ].map((item) => (
+          <div class="mb-4">
+            <span class="font-mono text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block mb-1">
+              {item.label}
+            </span>
+            <span class="text-[13px] text-paper/80 font-medium whitespace-pre-line">
+              {item.value}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-white/6 py-5 flex justify-between items-center">
-      <span class="font-mono text-[10px] text-text-on-dark/30 tracking-[1px]">
+    <div class="border-t border-white/6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <span class="font-mono text-[10px] text-text-on-dark/30 tracking-[1px] text-center sm:text-left">
         © {new Date().getFullYear()} {site.name}
       </span>
 
       <div class="flex gap-3">
-        {
-          [
-            { label: 'ig', href: site.social.instagram },
-            { label: 'in', href: site.social.linkedin },
-          ].map((s) => (
-            <a
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-9 h-9 border border-white/6 flex items-center justify-center text-text-on-dark/30 text-xs no-underline transition-all duration-300 hover:border-brass hover:text-brass"
-            >
-              {s.label}
-            </a>
-          ))
-        }
+        {[
+          { label: 'ig', href: site.social.instagram },
+          { label: 'in', href: site.social.linkedin },
+        ].map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 border border-white/6 flex items-center justify-center text-text-on-dark/30 text-xs no-underline transition-all duration-300 hover:border-brass hover:text-brass"
+          >
+            {s.label}
+          </a>
+        ))}
       </div>
 
       <span class="font-mono text-[10px] text-text-on-dark/30 tracking-[1px]">

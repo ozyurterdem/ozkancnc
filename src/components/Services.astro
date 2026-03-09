@@ -2,17 +2,17 @@
 import { services } from '../data/site';
 ---
 
-<section class="py-20 lg:py-30 bg-paper-warm" id="hizmetler">
+<section class="py-16 lg:py-28 bg-paper-warm" id="hizmetler">
   <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
     <!-- Section Header -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-12 lg:mb-18 items-end">
-      <div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 mb-10 lg:mb-16 items-end">
+      <div data-reveal>
         <div class="section-tag section-tag--eng">Hizmetlerimiz</div>
-        <h2 class="font-heading text-3xl lg:text-[42px] font-extrabold text-text-primary tracking-tight leading-[1.1]">
+        <h2 class="font-heading text-[clamp(1.75rem,3.5vw,2.625rem)] font-extrabold text-text-primary tracking-tight leading-[1.1]">
           Uzmanlık<br />Alanlarımız
         </h2>
       </div>
-      <div>
+      <div data-reveal data-reveal-delay="100">
         <p class="text-[15px] text-text-secondary leading-[1.8]">
           Universal tezgahlardan CNC işleme merkezlerine evrilen 30 yıllık yolculuğumuzda,
           hassasiyet ve kaliteden hiçbir zaman ödün vermedik.
@@ -21,20 +21,24 @@ import { services } from '../data/site';
     </div>
 
     <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/6 border border-black/6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/6 border border-black/6">
       {
-        services.map((srv) => (
-          <div class="bg-paper transition-all duration-500 hover:bg-paper-warm relative group overflow-hidden">
+        services.map((srv, i) => (
+          <div
+            class="bg-paper transition-all duration-500 hover:bg-paper-warm relative group overflow-hidden"
+            data-reveal
+            data-reveal-delay={`${(i % 3) * 100}`}
+          >
             {/* Service image */}
-            <div class="h-48 overflow-hidden relative">
+            <div class="h-44 sm:h-48 overflow-hidden relative">
               <img
                 src={srv.image}
                 alt={srv.title}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <span class="absolute bottom-3 left-4 font-mono text-[10px] text-white/70 tracking-[2px]">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+              <span class="absolute bottom-3 left-4 font-mono text-[10px] text-white/60 tracking-[2px]">
                 {srv.num}
               </span>
             </div>
@@ -42,16 +46,14 @@ import { services } from '../data/site';
             {/* Top accent line on hover */}
             <div class="absolute top-0 left-0 w-0 h-0.5 bg-brass transition-all duration-500 group-hover:w-full z-10" />
 
-            <div class="p-8">
-              <h3 class="font-heading text-xl font-bold text-text-primary mb-3 tracking-tight">
+            <div class="p-6 lg:p-8">
+              <h3 class="font-heading text-lg lg:text-xl font-bold text-text-primary mb-2 tracking-tight">
                 {srv.title}
               </h3>
-
-              <p class="text-sm text-text-secondary leading-[1.7]">
+              <p class="text-[13px] lg:text-sm text-text-secondary leading-[1.7]">
                 {srv.description}
               </p>
-
-              <span class="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] text-eng-mid tracking-[1px] px-3 py-1.5 bg-eng-mid/8">
+              <span class="inline-flex mt-4 font-mono text-[10px] text-eng-mid tracking-[1px] px-3 py-1.5 bg-eng-mid/8">
                 {srv.tag}
               </span>
             </div>

@@ -2,9 +2,9 @@
 import { certifications } from '../data/site';
 ---
 
-<section class="py-20 bg-ink border-t-[3px] border-brass" id="kalite">
-  <div class="max-w-[1200px] mx-auto px-10">
-    <div class="flex items-center justify-between">
+<section class="py-14 lg:py-20 bg-ink border-t-[3px] border-brass" id="kalite">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6" data-reveal>
       <!-- Left label -->
       <div class="flex items-center gap-4">
         <span class="font-mono text-[11px] text-brass tracking-[3px] uppercase">
@@ -14,14 +14,14 @@ import { certifications } from '../data/site';
       </div>
 
       <!-- Badges -->
-      <div class="flex gap-8">
+      <div class="flex flex-wrap gap-3 sm:gap-4 lg:gap-8">
         {
           certifications.map((cert) => (
-            <div class="text-center py-6 px-9 border border-white/6 transition-all duration-300 hover:border-white/12">
-              <div class="font-heading text-lg font-bold text-paper tracking-[1px]">
+            <div class="text-center py-4 px-6 lg:py-6 lg:px-9 border border-white/6 transition-all duration-300 hover:border-white/12">
+              <div class="font-heading text-base lg:text-lg font-bold text-paper tracking-[1px]">
                 {cert.name}
               </div>
-              <div class="font-mono text-[9px] text-text-on-dark/40 tracking-[2px] uppercase mt-1">
+              <div class="font-mono text-[8px] lg:text-[9px] text-text-on-dark/40 tracking-[2px] uppercase mt-1">
                 {cert.desc}
               </div>
             </div>

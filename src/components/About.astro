@@ -2,42 +2,47 @@
 import { about, qualityPolicies } from '../data/site';
 ---
 
-<section class="py-20 lg:py-30 bg-ink relative overflow-hidden" id="kurumsal">
+<section class="py-16 lg:py-28 bg-ink relative overflow-hidden" id="kurumsal">
   <div class="absolute inset-0 bp-grid pointer-events-none"></div>
 
   <div class="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-1">
-    <div class="grid grid-cols-1 lg:grid-cols-[5fr_4fr] gap-12 lg:gap-x-24 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[5fr_4fr] gap-12 lg:gap-x-20 items-start">
       <!-- Left: Content -->
       <div>
-        <div class="section-tag section-tag--brass">Hakkımızda</div>
+        <div class="section-tag section-tag--brass" data-reveal>Hakkımızda</div>
 
-        <h2 class="font-heading text-3xl lg:text-[42px] font-extrabold text-paper leading-[1.1] tracking-tight mb-9">
+        <h2
+          class="font-heading text-[clamp(1.75rem,3.5vw,2.625rem)] font-extrabold text-paper leading-[1.1] tracking-tight mb-8"
+          data-reveal data-reveal-delay="100"
+        >
           Özkan Kardeşler<br />CNC Merkezi
         </h2>
 
         {
-          about.text.map((p) => (
-            <p class="text-[15px] text-text-on-dark/65 leading-[1.9] mb-5">{p}</p>
+          about.text.map((p, i) => (
+            <p class="text-[15px] text-text-on-dark/65 leading-[1.9] mb-5" data-reveal data-reveal-delay={`${(i + 2) * 100}`}>
+              {p}
+            </p>
           ))
         }
 
         <!-- Misyon & Vizyon -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 mb-8">
-          <div class="border border-white/6 p-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 mb-8" data-reveal data-reveal-delay="300">
+          <div class="border border-white/6 p-5 lg:p-6">
             <h4 class="font-mono text-[10px] text-brass tracking-[3px] uppercase mb-3">Misyonumuz</h4>
-            <p class="text-sm text-text-on-dark/60 leading-[1.7]">{about.mission}</p>
+            <p class="text-[13px] text-text-on-dark/60 leading-[1.7]">{about.mission}</p>
           </div>
-          <div class="border border-white/6 p-6">
+          <div class="border border-white/6 p-5 lg:p-6">
             <h4 class="font-mono text-[10px] text-brass tracking-[3px] uppercase mb-3">Vizyonumuz</h4>
-            <p class="text-sm text-text-on-dark/60 leading-[1.7]">{about.vision}</p>
+            <p class="text-[13px] text-text-on-dark/60 leading-[1.7]">{about.vision}</p>
           </div>
         </div>
 
         <!-- Specs table -->
-        <div class="border-t border-white/6">
+        <div class="border-t border-white/6" data-reveal data-reveal-delay="400">
           {
             about.specs.map((spec) => (
-              <div class="grid grid-cols-[140px_1fr] lg:grid-cols-[160px_1fr] border-b border-white/6 py-4 text-[13px]">
+              <div class="grid grid-cols-[120px_1fr] sm:grid-cols-[160px_1fr] border-b border-white/6 py-3.5 text-[13px]">
                 <dt class="font-mono text-[10px] text-text-on-dark/40 tracking-[2px] uppercase pt-0.5">
                   {spec.label}
                 </dt>
@@ -49,21 +54,21 @@ import { about, qualityPolicies } from '../data/site';
       </div>
 
       <!-- Right: Quality Policy -->
-      <div>
-        <div class="bg-ink-2 border border-white/6 p-8 lg:p-12 relative">
-          <div class="absolute top-0 left-10 -translate-y-1/2 bg-brass text-ink font-mono text-[10px] font-medium tracking-[3px] uppercase px-5 py-1.5">
+      <div data-reveal data-reveal-delay="200">
+        <div class="bg-ink-2 border border-white/6 p-6 lg:p-10 relative mt-4 lg:mt-12">
+          <div class="absolute top-0 left-6 lg:left-10 -translate-y-1/2 bg-brass text-ink font-mono text-[10px] font-medium tracking-[3px] uppercase px-5 py-1.5">
             Kalite Politikası
           </div>
 
-          <h4 class="font-heading text-xl lg:text-[22px] font-bold text-paper mb-7 mt-2">
+          <h4 class="font-heading text-lg lg:text-[22px] font-bold text-paper mb-6 mt-2">
             Müşteri Odaklı<br />Sürekli İyileştirme
           </h4>
 
           <ul class="list-none">
             {
               qualityPolicies.map((item) => (
-                <li class="text-sm text-text-on-dark/65 leading-[1.6] py-3.5 pl-5 border-b border-white/6 last:border-b-0 relative">
-                  <span class="absolute left-0 top-[18px] w-1.5 h-1.5 border border-brass rotate-45" />
+                <li class="text-[13px] text-text-on-dark/65 leading-[1.6] py-3 pl-5 border-b border-white/6 last:border-b-0 relative">
+                  <span class="absolute left-0 top-[16px] w-1.5 h-1.5 border border-brass rotate-45" />
                   {item}
                 </li>
               ))
@@ -73,11 +78,11 @@ import { about, qualityPolicies } from '../data/site';
 
         <!-- Title block -->
         <div class="grid grid-cols-2 border border-white/6 border-t-0 -mt-px">
-          <div class="p-3.5 px-5 border-r border-white/6 font-mono">
+          <div class="p-3 px-4 lg:px-5 border-r border-white/6 font-mono">
             <span class="text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block">Doküman</span>
             <span class="text-xs text-paper font-medium">Kurumsal Profil</span>
           </div>
-          <div class="p-3.5 px-5 font-mono">
+          <div class="p-3 px-4 lg:px-5 font-mono">
             <span class="text-[8px] text-text-on-dark/30 tracking-[2px] uppercase block">Revizyon</span>
             <span class="text-xs text-paper font-medium">2026.03</span>
           </div>

@@ -2,90 +2,91 @@
 import { site, sliderImages } from '../data/site';
 ---
 
-<section class="min-h-screen bg-ink grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden" id="hero">
+<section class="relative overflow-hidden bg-ink" id="hero">
+  <!-- Background slideshow (full, behind everything) -->
+  <div class="absolute inset-0" id="hero-slideshow">
+    {sliderImages.map((img, i) => (
+      <img
+        src={img.src}
+        alt={img.alt}
+        class:list={[
+          'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000',
+          i === 0 ? 'opacity-100' : 'opacity-0',
+        ]}
+        data-slide={i}
+        loading={i === 0 ? 'eager' : 'lazy'}
+      />
+    ))}
+  </div>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-ink/75 lg:bg-gradient-to-r lg:from-ink/95 lg:via-ink/80 lg:to-ink/40 z-1"></div>
+
   <!-- Subtle grid -->
-  <div class="absolute inset-0 bp-grid pointer-events-none"></div>
+  <div class="absolute inset-0 bp-grid pointer-events-none z-2"></div>
 
-  <!-- Left: Content -->
-  <div class="flex items-center relative z-2 pt-[88px]">
-    <div class="px-10 max-w-[540px] mx-auto w-full lg:pr-8">
-      <!-- Label -->
-      <div class="section-tag section-tag--brass mb-8">
-        Talaşlı İmalat Merkezi
-      </div>
+  <!-- Content -->
+  <div class="relative z-10 min-h-screen flex items-center pt-[88px]">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-10 w-full py-16 lg:py-0">
+      <div class="max-w-[560px]">
+        <!-- Label -->
+        <div class="section-tag section-tag--brass mb-6 lg:mb-8" data-reveal>
+          Talaşlı İmalat Merkezi
+        </div>
 
-      <!-- Heading -->
-      <h1 class="font-heading text-4xl lg:text-[56px] font-extrabold leading-[1.05] text-paper tracking-tight mb-3">
-        Hassas Üretim,<br />
-        <span class="font-medium text-text-on-dark">Güvenilir</span><br />
-        Mühendislik.
-      </h1>
-
-      <!-- Sub line -->
-      <div class="font-mono text-xs text-text-on-dark/40 tracking-[1px] mb-8 pb-8 border-b border-white/6">
-        {site.established}'ten bu yana · {site.address.district}, {site.address.city} · ISO 9001:2015
-      </div>
-
-      <!-- Description -->
-      <p class="text-base text-text-on-dark/70 leading-[1.8] mb-12 max-w-[420px]">
-        {site.description}
-      </p>
-
-      <!-- Actions -->
-      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-        <a
-          href="#iletisim"
-          class="inline-flex items-center gap-2.5 px-8 py-4 bg-brass text-ink text-[13px] font-semibold tracking-[0.5px] no-underline transition-all duration-400 hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(176,141,78,0.15)]"
+        <!-- Heading -->
+        <h1
+          class="font-heading text-[clamp(2.25rem,5vw,3.5rem)] font-extrabold leading-[1.05] text-paper tracking-tight mb-3"
+          data-reveal data-reveal-delay="100"
         >
-          Teklif Talep Edin
-        </a>
-        <a
-          href="#makinalar"
-          class="inline-flex items-center gap-2 px-6 py-4 text-text-on-dark text-[13px] font-medium no-underline border border-white/6 transition-all duration-300 hover:border-white/12 hover:text-paper"
+          Hassas Üretim,<br />
+          <span class="font-medium text-text-on-dark">Güvenilir</span><br />
+          Mühendislik.
+        </h1>
+
+        <!-- Sub line -->
+        <div
+          class="font-mono text-[11px] text-text-on-dark/40 tracking-[1px] mb-6 lg:mb-8 pb-6 lg:pb-8 border-b border-white/6"
+          data-reveal data-reveal-delay="200"
         >
-          Makina Parkuru →
-        </a>
+          {site.established}'ten bu yana · {site.address.district}, {site.address.city} · ISO 9001:2015
+        </div>
+
+        <!-- Description -->
+        <p
+          class="text-[15px] lg:text-base text-text-on-dark/70 leading-[1.8] mb-10 lg:mb-12 max-w-[440px]"
+          data-reveal data-reveal-delay="300"
+        >
+          {site.description}
+        </p>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center" data-reveal data-reveal-delay="400">
+          <a
+            href="#iletisim"
+            class="inline-flex items-center gap-2.5 px-8 py-4 bg-brass text-ink text-[13px] font-semibold tracking-[0.5px] no-underline transition-all duration-400 hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(176,141,78,0.15)]"
+          >
+            Teklif Talep Edin
+          </a>
+          <a
+            href="#makinalar"
+            class="inline-flex items-center gap-2 px-6 py-4 text-text-on-dark text-[13px] font-medium no-underline border border-white/10 transition-all duration-300 hover:border-white/20 hover:text-paper"
+          >
+            Makina Parkuru →
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Right: Slider images -->
-  <div class="relative hidden lg:flex items-center justify-center overflow-hidden">
-    <!-- Slideshow -->
-    <div class="absolute inset-0" id="hero-slideshow">
-      {sliderImages.map((img, i) => (
-        <img
-          src={img.src}
-          alt={img.alt}
-          class:list={[
-            'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000',
-            i === 0 ? 'opacity-100' : 'opacity-0',
-          ]}
-          data-slide={i}
-          loading={i === 0 ? 'eager' : 'lazy'}
-        />
-      ))}
-    </div>
-
-    <!-- Dark overlay gradients -->
-    <div
-      class="absolute inset-0 z-1 pointer-events-none"
-      style="background: linear-gradient(180deg, rgba(12,17,29,0.4) 0%, transparent 30%, transparent 70%, rgba(12,17,29,0.7) 100%), linear-gradient(90deg, rgba(12,17,29,0.85) 0%, transparent 40%);"
-    ></div>
-
-    <!-- Bottom info -->
-    <div class="absolute bottom-10 right-10 z-2 text-right">
-      <span class="font-mono text-[10px] text-text-on-dark/30 tracking-[2px] uppercase block">
-        CNC İşleme Merkezi
-      </span>
-      <span class="font-mono text-[11px] text-text-on-dark/50 block mt-1">
-        Arifiye / Sakarya
-      </span>
-    </div>
+  <!-- Bottom info (desktop) -->
+  <div class="absolute bottom-8 right-10 z-10 text-right hidden lg:block">
+    <span class="font-mono text-[10px] text-text-on-dark/25 tracking-[2px] uppercase block">
+      Arifiye / Sakarya
+    </span>
   </div>
 </section>
 
-<!-- Hero slideshow script -->
 <script>
   const slides = document.querySelectorAll('#hero-slideshow img[data-slide]');
   if (slides.length > 1) {
