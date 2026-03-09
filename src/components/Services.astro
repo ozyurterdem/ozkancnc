@@ -2,13 +2,13 @@
 import { services } from '../data/site';
 ---
 
-<section class="py-30 bg-paper-warm" id="hizmetler">
-  <div class="max-w-[1200px] mx-auto px-10">
-    <!-- Section Header: split layout -->
-    <div class="grid grid-cols-2 gap-10 mb-18 items-end">
+<section class="py-20 lg:py-30 bg-paper-warm" id="hizmetler">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
+    <!-- Section Header -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-12 lg:mb-18 items-end">
       <div>
         <div class="section-tag section-tag--eng">Hizmetlerimiz</div>
-        <h2 class="font-heading text-[42px] font-extrabold text-text-primary tracking-tight leading-[1.1]">
+        <h2 class="font-heading text-3xl lg:text-[42px] font-extrabold text-text-primary tracking-tight leading-[1.1]">
           Uzmanlık<br />Alanlarımız
         </h2>
       </div>
@@ -21,28 +21,40 @@ import { services } from '../data/site';
     </div>
 
     <!-- Services Grid -->
-    <div class="grid grid-cols-3 gap-px bg-black/6 border border-black/6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/6 border border-black/6">
       {
         services.map((srv) => (
-          <div class="bg-paper py-11 px-9 transition-all duration-500 hover:bg-paper-warm relative group">
-            {/* Top accent line on hover */}
-            <div class="absolute top-0 left-0 w-0 h-0.5 bg-brass transition-all duration-500 group-hover:w-full" />
-
-            <div class="font-mono text-[10px] text-text-muted tracking-[2px] mb-7">
-              {srv.num}
+          <div class="bg-paper transition-all duration-500 hover:bg-paper-warm relative group overflow-hidden">
+            {/* Service image */}
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src={srv.image}
+                alt={srv.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <span class="absolute bottom-3 left-4 font-mono text-[10px] text-white/70 tracking-[2px]">
+                {srv.num}
+              </span>
             </div>
 
-            <h3 class="font-heading text-xl font-bold text-text-primary mb-3 tracking-tight">
-              {srv.title}
-            </h3>
+            {/* Top accent line on hover */}
+            <div class="absolute top-0 left-0 w-0 h-0.5 bg-brass transition-all duration-500 group-hover:w-full z-10" />
 
-            <p class="text-sm text-text-secondary leading-[1.7]">
-              {srv.description}
-            </p>
+            <div class="p-8">
+              <h3 class="font-heading text-xl font-bold text-text-primary mb-3 tracking-tight">
+                {srv.title}
+              </h3>
 
-            <span class="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] text-eng-mid tracking-[1px] px-3 py-1.5 bg-eng-mid/8">
-              {srv.tag}
-            </span>
+              <p class="text-sm text-text-secondary leading-[1.7]">
+                {srv.description}
+              </p>
+
+              <span class="inline-flex items-center gap-1.5 mt-5 font-mono text-[10px] text-eng-mid tracking-[1px] px-3 py-1.5 bg-eng-mid/8">
+                {srv.tag}
+              </span>
+            </div>
           </div>
         ))
       }

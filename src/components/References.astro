@@ -1,0 +1,32 @@
+---
+import { referansLogos } from '../data/site';
+---
+
+<section class="py-16 bg-paper border-t border-black/6" id="referanslar">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
+    <!-- Label -->
+    <div class="flex items-center justify-center gap-4 mb-10">
+      <div class="h-px flex-1 bg-black/6"></div>
+      <span class="font-mono text-[10px] text-text-muted tracking-[3px] uppercase">
+        Referanslarımız
+      </span>
+      <div class="h-px flex-1 bg-black/6"></div>
+    </div>
+
+    <!-- Logos -->
+    <div class="flex items-center justify-center gap-8 lg:gap-16 flex-wrap">
+      {
+        referansLogos.map((ref) => (
+          <div class="w-24 h-16 lg:w-32 lg:h-20 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-400 grayscale hover:grayscale-0">
+            <img
+              src={ref.src}
+              alt={ref.alt}
+              class="max-w-full max-h-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
