@@ -22,41 +22,58 @@ import { machineGroups } from '../data/site';
     <!-- Machine Groups -->
     <div class="flex flex-col gap-12 lg:gap-14">
       {
-        machineGroups.map((group, gi) => (
-          <div data-reveal data-reveal-delay={`${gi * 100}`}>
-            {/* Group Title */}
-            <div class="flex items-center gap-3 font-mono text-[11px] text-eng-mid tracking-[3px] uppercase pb-4 border-b border-black/6 mb-px">
-              <span class="w-2 h-2 bg-eng-mid/30" />
-              {group.title}
-            </div>
+        machineGroups.map((group, gi) => {
+          // Makina sayısına göre en uygun kolon: boşluk kalmamalı
+          const count = group.machines.length;
+          // 6→3 kolon(2x3), 5→5 kolon(1x5), 4→4, 3→3, 2→2
+          const colClass =
+            count === 5
+              ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
+              : count === 6
+                ? 'grid-cols-2 sm:grid-cols-3'
+                : count === 4
+                  ? 'grid-cols-2 lg:grid-cols-4'
+                  : 'grid-cols-2 sm:grid-cols-3';
 
-            {/* Machines Row */}
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-black/6 border border-black/6 border-t-0">
-              {group.machines.map((machine) => (
-                <div class="bg-paper transition-all duration-400 hover:bg-paper-warm group/mc overflow-hidden">
-                  <div class="h-[120px] sm:h-[140px] lg:h-[160px] overflow-hidden relative">
-                    <img
-                      src={machine.image}
-                      alt={machine.name}
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover/mc:scale-105"
-                      loading="lazy"
-                    />
-                    <div class="absolute top-2 left-2 w-3 h-3 border-t border-l border-eng-mid/40 opacity-0 group-hover/mc:opacity-100 transition-opacity duration-400" />
-                    <div class="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-eng-mid/40 opacity-0 group-hover/mc:opacity-100 transition-opacity duration-400" />
+          return (
+            <div data-reveal data-reveal-delay={`${gi * 100}`}>
+              {/* Group Title */}
+              <div class="flex items-center gap-3 font-mono text-[11px] text-eng-mid tracking-[3px] uppercase pb-4 border-b border-black/6 mb-px">
+                <span class="w-2 h-2 bg-eng-mid/30" />
+                {group.title}
+                <span class="text-text-muted/40 ml-auto text-[10px] tracking-normal normal-case">
+                  {count} tezgah
+                </span>
+              </div>
+
+              {/* Machines Grid */}
+              <div class={`grid ${colClass} gap-px bg-black/6 border border-black/6 border-t-0`}>
+                {group.machines.map((machine) => (
+                  <div class="bg-paper transition-all duration-400 hover:bg-paper-warm group/mc overflow-hidden">
+                    <div class="h-[130px] sm:h-[150px] lg:h-[170px] overflow-hidden relative">
+                      <img
+                        src={machine.image}
+                        alt={machine.name}
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover/mc:scale-105"
+                        loading="lazy"
+                      />
+                      <div class="absolute top-2 left-2 w-3 h-3 border-t border-l border-eng-mid/40 opacity-0 group-hover/mc:opacity-100 transition-opacity duration-400" />
+                      <div class="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-eng-mid/40 opacity-0 group-hover/mc:opacity-100 transition-opacity duration-400" />
+                    </div>
+                    <div class="p-3.5 sm:p-4 lg:p-5">
+                      <h4 class="font-heading text-[13px] lg:text-[14px] font-bold text-text-primary mb-1 leading-tight">
+                        {machine.name}
+                      </h4>
+                      <span class="font-mono text-[9px] lg:text-[10px] text-text-muted tracking-[1px]">
+                        {machine.type}
+                      </span>
+                    </div>
                   </div>
-                  <div class="p-3.5 sm:p-4 lg:p-5">
-                    <h4 class="font-heading text-[13px] lg:text-[14px] font-bold text-text-primary mb-1 leading-tight">
-                      {machine.name}
-                    </h4>
-                    <span class="font-mono text-[9px] lg:text-[10px] text-text-muted tracking-[1px]">
-                      {machine.type}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))
+          );
+        })
       }
     </div>
   </div>
