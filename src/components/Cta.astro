@@ -4,92 +4,223 @@ import { site } from '../data/site';
 
 <section class="py-16 lg:py-28 bg-paper-warm border-t border-black/6" id="iletisim">
   <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-      <!-- Left: CTA Text -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <!-- Left: Form -->
       <div>
-        <div class="section-tag section-tag--eng" data-reveal>İletişim</div>
+        <div class="section-tag section-tag--eng" data-reveal>Teklif Formu</div>
         <h2
-          class="font-heading text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-text-primary tracking-tight leading-[1.1] mb-4"
+          class="font-heading text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-text-primary tracking-tight leading-[1.1] mb-3"
           data-reveal data-reveal-delay="100"
         >
           Projeniz İçin<br />Teklif Alın
         </h2>
         <p class="text-[15px] text-text-secondary leading-[1.8] mb-8" data-reveal data-reveal-delay="200">
-          Teknik çizimlerinizi gönderin, 24 saat içinde detaylı maliyet analizi ve üretim planı sunalım.
+          Formu doldurun, 24 saat içinde detaylı maliyet analizi ve üretim planı sunalım.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 mb-10" data-reveal data-reveal-delay="300">
-          <a
-            href={`mailto:${site.email}`}
-            class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-brass text-ink text-[13px] font-semibold tracking-[0.5px] no-underline transition-all duration-400 hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(176,141,78,0.15)]"
-          >
-            Teklif Talep Edin
-          </a>
-          <a
-            href={`tel:${site.phone.replace(/\s/g, '')}`}
-            class="inline-flex items-center justify-center gap-2 px-6 py-4 text-text-primary text-[13px] font-medium no-underline border border-black/10 transition-all duration-300 hover:border-black/20"
-          >
-            {site.phone} →
-          </a>
-        </div>
+
+        <!-- Form -->
+        <form
+          id="contact-form"
+          class="space-y-4"
+          data-reveal data-reveal-delay="300"
+        >
+          <!-- Honeypot -->
+          <div class="hidden" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="name">
+                Ad Soyad *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)]"
+                placeholder="Adınız Soyadınız"
+              />
+            </div>
+            <div>
+              <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="company">
+                Firma
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)]"
+                placeholder="Firma Adı"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="email">
+                E-Posta *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)]"
+                placeholder="ornek@firma.com"
+              />
+            </div>
+            <div>
+              <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="phone">
+                Telefon *
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)]"
+                placeholder="0 5XX XXX XX XX"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="subject">
+              Konu *
+            </label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)] appearance-none"
+              style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path fill=%22%238d95a7%22 d=%22M2 4l4 4 4-4%22/></svg>'); background-repeat: no-repeat; background-position: right 16px center;"
+            >
+              <option value="" disabled selected>Hizmet seçiniz</option>
+              <option value="talasli-imalat">Talaşlı İmalat</option>
+              <option value="fason-uretim">Fason Üretim</option>
+              <option value="cnc-torna">CNC Torna</option>
+              <option value="kalip-uretimi">Kalıp Üretimi</option>
+              <option value="yedek-parca">Yedek Parça İmalatı</option>
+              <option value="kaynak">Kaynak & Makina İmalatı</option>
+              <option value="diger">Diğer</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="font-mono text-[9px] text-text-muted tracking-[2px] uppercase block mb-2" for="message">
+              Mesajınız *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="w-full bg-paper border border-black/10 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-300 focus:border-eng-mid focus:shadow-[0_0_0_3px_rgba(42,82,152,0.08)] resize-y min-h-[120px]"
+              placeholder="Proje detaylarınız, adet bilgisi, teknik çizim vb."
+            ></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center pt-2">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-brass text-ink text-[13px] font-semibold tracking-[0.5px] border-none cursor-pointer transition-all duration-400 hover:-translate-y-px hover:shadow-[0_8px_32px_rgba(176,141,78,0.15)] w-full sm:w-auto"
+            >
+              Teklif Talep Edin
+            </button>
+            <span class="font-mono text-[10px] text-text-muted tracking-[0.5px]">
+              * Zorunlu alanlar
+            </span>
+          </div>
+
+          <!-- Success/Error message -->
+          <div id="form-status" class="hidden mt-4 p-4 text-sm font-medium"></div>
+        </form>
       </div>
 
       <!-- Right: Contact Card -->
-      <div class="bg-ink p-6 sm:p-8 lg:p-10 relative" data-reveal data-reveal-delay="200">
-        <div class="absolute top-0 left-0 w-[3px] h-full bg-brass"></div>
+      <div class="flex flex-col gap-6" data-reveal data-reveal-delay="200">
+        <!-- Contact info -->
+        <div class="bg-ink p-6 sm:p-8 lg:p-10 relative">
+          <div class="absolute top-0 left-0 w-[3px] h-full bg-brass"></div>
 
-        {
-          [
-            { label: 'Telefon', value: site.phone },
-            { label: 'E-Posta', value: site.email, highlight: true },
-            {
-              label: 'Adres',
-              value: `${site.address.street}\n${site.address.district} / ${site.address.city}`,
-            },
-            { label: 'Çalışma Saatleri', value: site.workingHours },
-          ].map((item) => (
-            <div class="py-4 border-b border-white/6 last:border-b-0">
-              <div class="font-mono text-[9px] text-text-on-dark/30 tracking-[3px] uppercase mb-1.5">
-                {item.label}
-              </div>
-              <div
-                class:list={[
-                  'text-[14px] lg:text-[15px] font-medium whitespace-pre-line',
-                  item.highlight ? 'text-brass-light font-mono text-[13px]' : 'text-paper',
-                ]}
-              >
-                {item.value}
-              </div>
-            </div>
-          ))
-        }
+          <h3 class="font-heading text-lg font-bold text-paper mb-6">İletişim Bilgileri</h3>
 
-        <div class="flex gap-3 mt-5">
-          <a
-            href={site.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 border border-white/6 text-text-on-dark/50 font-mono text-[11px] tracking-[1px] no-underline transition-all duration-300 hover:border-brass hover:text-brass"
-          >
-            Instagram ↗
-          </a>
-          <a
-            href={site.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 border border-white/6 text-text-on-dark/50 font-mono text-[11px] tracking-[1px] no-underline transition-all duration-300 hover:border-brass hover:text-brass"
-          >
-            LinkedIn ↗
-          </a>
+          {
+            [
+              { label: 'Telefon', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
+              { label: 'E-Posta', value: site.email, href: `mailto:${site.email}`, highlight: true },
+              {
+                label: 'Adres',
+                value: `${site.address.street}\n${site.address.district} / ${site.address.city}`,
+              },
+              { label: 'Çalışma Saatleri', value: site.workingHours },
+            ].map((item) => (
+              <div class="py-4 border-b border-white/6 last:border-b-0">
+                <div class="font-mono text-[9px] text-text-on-dark/30 tracking-[3px] uppercase mb-1.5">
+                  {item.label}
+                </div>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      'block text-[14px] font-medium whitespace-pre-line no-underline transition-opacity duration-300 hover:opacity-80',
+                      item.highlight ? 'text-brass-light font-mono text-[13px]' : 'text-paper',
+                    ]}
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <div class="text-[14px] text-paper font-medium whitespace-pre-line">
+                    {item.value}
+                  </div>
+                )}
+              </div>
+            ))
+          }
+
+          <div class="flex gap-3 mt-5">
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 border border-white/6 text-text-on-dark/50 font-mono text-[11px] tracking-[1px] no-underline transition-all duration-300 hover:border-brass hover:text-brass"
+            >
+              Instagram ↗
+            </a>
+            <a
+              href={site.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 border border-white/6 text-text-on-dark/50 font-mono text-[11px] tracking-[1px] no-underline transition-all duration-300 hover:border-brass hover:text-brass"
+            >
+              LinkedIn ↗
+            </a>
+          </div>
         </div>
+
+        <!-- Direct call CTA -->
+        <a
+          href={`tel:${site.phone.replace(/\s/g, '')}`}
+          class="flex items-center gap-4 bg-ink p-5 no-underline group transition-all duration-300 hover:bg-ink-2"
+        >
+          <div class="w-12 h-12 border border-brass/30 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:border-brass group-hover:bg-brass/10">
+            <span class="text-brass text-lg">✆</span>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-text-on-dark/30 tracking-[2px] uppercase">Hemen Arayın</div>
+            <div class="text-paper font-heading font-bold text-lg tracking-wide">{site.phone}</div>
+          </div>
+        </a>
       </div>
     </div>
 
-    <!-- Google Maps — full width -->
+    <!-- Google Maps -->
     <div class="mt-12 lg:mt-16 border border-black/6 overflow-hidden" data-reveal>
       <iframe
         src={site.mapEmbed}
         width="100%"
-        height="350"
         style="border:0;"
         allowfullscreen=""
         loading="lazy"
@@ -100,3 +231,38 @@ import { site } from '../data/site';
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Honeypot check
+    const honeypot = form.querySelector('input[name="website"]') as HTMLInputElement;
+    if (honeypot?.value) return;
+
+    // Collect data
+    const data = new FormData(form);
+    const subject = `Teklif Talebi — ${data.get('name')} / ${data.get('subject')}`;
+    const body = `Ad Soyad: ${data.get('name')}
+Firma: ${data.get('company') || '-'}
+E-Posta: ${data.get('email')}
+Telefon: ${data.get('phone')}
+Konu: ${data.get('subject')}
+
+Mesaj:
+${data.get('message')}`;
+
+    // Open mailto
+    const mailto = `mailto:bilgi@ozkancnc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    // Show success
+    if (status) {
+      status.className = 'mt-4 p-4 text-sm font-medium bg-eng-mid/8 text-eng-mid border border-eng-mid/20';
+      status.textContent = 'E-posta istemciniz açılıyor. Lütfen mesajı gönderin.';
+    }
+  });
+</script>
