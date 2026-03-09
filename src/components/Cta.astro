@@ -134,8 +134,6 @@ import { site } from '../data/site';
             </span>
           </div>
 
-          <!-- Success/Error message -->
-          <div id="form-status" class="hidden mt-4 p-4 text-sm font-medium"></div>
         </form>
       </div>
 
@@ -234,16 +232,13 @@ import { site } from '../data/site';
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
-  const status = document.getElementById('form-status');
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Honeypot check
     const honeypot = form.querySelector('input[name="website"]') as HTMLInputElement;
     if (honeypot?.value) return;
 
-    // Collect data
     const data = new FormData(form);
     const subject = `Teklif Talebi — ${data.get('name')} / ${data.get('subject')}`;
     const body = `Ad Soyad: ${data.get('name')}
@@ -255,14 +250,6 @@ Konu: ${data.get('subject')}
 Mesaj:
 ${data.get('message')}`;
 
-    // Open mailto
-    const mailto = `mailto:bilgi@ozkancnc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-
-    // Show success
-    if (status) {
-      status.className = 'mt-4 p-4 text-sm font-medium bg-eng-mid/8 text-eng-mid border border-eng-mid/20';
-      status.textContent = 'E-posta istemciniz açılıyor. Lütfen mesajı gönderin.';
-    }
+    window.location.href = `mailto:bilgi@ozkancnc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 </script>
